@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="/iconos/Logo_Dindog.svg" rel="shortcut icon" />
+  <title>Chat - Dindog</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="/stylesheet/mensajes/chat.css" />
+</head>
+<body>
+  <%- include('../partials/navbar') %>
+  <div class="container-fluid p-0">
+    <div class="row g-0">
+      <div class="col-md-4 contactos">
+        <div class="searchbar p-3 border-bottom">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Escribe un mensaje" aria-label="Buscar" id="search-input">
+            <span class="input-group-text"><i class="fas fa-search"></i></span>
+          </div>
+        </div>
+        <div class="list-group chat-list" id="contactosList">
+          <% if (contactos.length > 0) { %>
+            <% contactos.forEach(contacto => { %>
+              <a href="/mensajes/chat/<%= contacto._id %>" class="list-group-item list-group-item-action d-flex align-items-center <%= contacto._id.toString() === receptorId ? 'active' : '' %>">
+                <div class="avatar me-3 position-relative">
+                  <% if (contacto.image && contacto.image.url) { %>
+                    <img src="<%= contacto.image.url %>" alt="Avatar de <%= contacto.nombre %>" class="img-fluid rounded-circle avatar-img">
+                  <% } else { %>
+                    <img src="/imgs/usuario-de-perfil.png" alt="Icono perfil por defecto" class="img-fluid rounded-circle avatar-img">
+                  <% } %>
+                  <% if (contacto.numUnreadMessages) { %>
+                    <span class="notification-dot"></span>
+                  <% } %>
+                </div>
+                <div class="flex-grow-1">
+                  <div class="d-flex justify-content-between">
+                    <strong class="contact-name"><%= contacto.nombre %></strong>
+                    <% if (contacto.numUnreadMessages) { %>
+                      <span class="badge bg-danger rounded-pill"><%= contacto.numUnreadMessages %></span>
+                    <% } %>
+                  </div>
+                </div>
+              </a>
+            <% }) %>
+          <% } else { %>
+            <p class="text-center text-muted">No tienes conversaciones activas.</p>
+          <% } %>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="chat-box">
+          <div class="chat-header d-flex align-items-center p-3 border-bottom">
+            <% if (receptor && receptor.image && receptor.image.url) { %>
+              <img src="<%= receptor.image.url %>" alt="Avatar de <%= receptor.nombre %>" class="rounded-circle me-3" width="50" height="50" />
+            <% } else { %>
+              <img src="/imgs/usuario-de-perfil.png" alt="Avatar de <%= receptor ? receptor.nombre : 'Usuario' %>" class="rounded-circle me-3" width="50" height="50" />
+            <% } %>
+            <div>
+              <h4 class="mb-0"><%= receptor ? receptor.nombre : 'Usuario' %></h4>
+              <% if (receptor && receptor.online) { %>
+                <span class="text-success">Online</span>
+              <% } %>
+            </div>
+          </div>
+          <div class="messages p-3" id="chat-messages">
+            <% mensajes.forEach(mensaje => { %>
+              <div class="message <%= mensaje.de._id.toString() === usuario._id.toString() ? 'outgoing' : 'incoming' %>">
+                <div class="msg-content">
+                  <% if (mensaje.contenido) { %>
+                    <p><%= mensaje.contenido %></p>
+                  <% } %>
+                  <% if (mensaje.imagen) { %>
+                    <img src="/<%= mensaje.imagen %>" alt="Imagen del mensaje" class="img-fluid mt-2" />
+                  <% } %>
+                  <div class="d-flex align-items-center">
+                    <time class="small text-muted me-2"><%= new Date(mensaje.fecha).toLocaleString() %></time>
+                    <% if (mensaje.de._id.toString() === usuario._id.toString()) { %>
+                      <% if (mensaje.leido) { %>
+                        <i class="fas fa-check-double text-success"></i>
+                      <% } else { %>
+                        <i class="fas fa-check-double text-muted"></i>
+                      <% } %>
+                    <% } %>
+                  </div>
+                </div>
+              </div>
+            <% }) %>
+          </div>
+          <form action="/mensajes/chat/<%= receptorId %>" method="post" class="form-container p-3 border-top" enctype="multipart/form-data">
+            <div class="input-group">
+              <textarea name="contenido" class="form-control" rows="1" placeholder="Escribe tu mensaje..." required></textarea>
+              <label class="btn btn-outline-secondary">
+                <i class="fas fa-paperclip"></i>
+                <input type="file" name="image" class="form-control-file" hidden>
+              </label>
+              <button type="submit" class="btn btn-warning"><i class="fas fa-paper-plane"></i></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%- include('../partials/footer') %>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <script src="/javascripts/mensajes/chat.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil - Dindog</title>
+    <link rel="shortcut icon" href="/iconos/Logo_Dindog.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheet/editar-perfil.css">
+</head>
+<body>
+    <header>
+        <%- include('partials/navbar') %>
+    </header>
+
+    <main class="container mt-5 mb-5">
+        <h1 class="mb-4 text-center">Editar Perfil</h1>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                <form action="/editar-perfil" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre Completo</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" value="<%= usuario.nombre %>" required>
+                        <div class="invalid-feedback">
+                            Por favor, ingrese su nombre completo.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Nombre de Usuario</label>
+                        <input type="text" class="form-control" id="username" name="username" value="<%= usuario.username %>" required>
+                        <div class="invalid-feedback">
+                            Por favor, ingrese su nombre de usuario.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" value="<%= usuario.email %>" required>
+                        <div class="invalid-feedback">
+                            Por favor, ingrese un email válido.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Nueva Contraseña</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Nueva Contraseña">
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirm-password" class="form-label">Confirmar Nueva Contraseña</label>
+                        <input type="password" class="form-control" id="confirm-password" name="confirmPassword" placeholder="Confirmar Nueva Contraseña">
+                        <div class="invalid-feedback">
+                            Ambas contraseñas deben coincidir.
+                        </div>
+                    </div>
+                    <% if (usuario.esCuidador) { %>
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Imagen del Cuidador</label>
+                            <input type="file" class="form-control" id="image" name="image">
+                            <% if (usuario.image && usuario.image.url) { %>
+                                <img src="<%= usuario.image.url %>" alt="Imagen del Cuidador" class="img-thumbnail mt-2" style="max-width: 150px;">
+                            <% } %>
+                        </div>
+                    <% } else { %>
+                        <div class="mb-3">
+                            <label for="userImage" class="form-label">Imagen Personal</label>
+                            <input type="file" class="form-control" id="userImage" name="userImage">
+                            <% if (usuario.userImage && usuario.userImage.url) { %>
+                                <img src="<%= usuario.userImage.url %>" alt="Imagen Personal" class="img-thumbnail mt-2" style="max-width: 150px;">
+                            <% } %>
+                        </div>
+                        <div class="mb-3">
+                            <label for="dogImage" class="form-label">Imagen del Perro</label>
+                            <input type="file" class="form-control" id="dogImage" name="dogImage">
+                            <% if (usuario.datosPerro && usuario.datosPerro.image && usuario.datosPerro.image.url) { %>
+                                <img src="<%= usuario.datosPerro.image.url %>" alt="Imagen del Perro" class="img-thumbnail mt-2" style="max-width: 150px;">
+                            <% } %>
+                        </div>
+                    <% } %>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Actualizar Perfil</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <%- include('partials/footer') %>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="/javascripts/editar-perfil.js"></script>
+</body>
+</html>

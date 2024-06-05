@@ -1,0 +1,111 @@
+<div class="container">
+    <style>
+        .container {
+            margin-top: 80px;
+        }
+
+        .btn.btn-primary {
+            width: 150px;
+        }
+
+        .a {
+            color: black;
+        }
+
+        .container .btn.btn-primary {
+            width: 150px;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeInUp 1s forwards;
+        }
+
+        footer .nav-link {
+            color: black !important;
+        }
+    </style>
+    <footer class="py-5">
+        <div class="row">
+            <div class="col-6 col-md-2 mb-3">
+                <h5>Dindog</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="/" class="nav-link p-0 text-body-secondary">Inicio</a></li>
+                    <li class="nav-item mb-2"><a href="/cuidadores" class="nav-link p-0 text-body-secondary">Cuidadores</a></li>
+                    <li class="nav-item mb-2"><a href="/sitiosPetFriendly" class="nav-link p-0 text-body-secondary">Sitios Pet Friendly</a></li>
+                    <li class="nav-item mb-2"><a href="/sobreNosotros" class="nav-link p-0 text-body-secondary">Nosotros</a></li>
+                </ul>
+            </div>
+
+            <div class="col-6 col-md-2 mb-3">
+                <h5>Política</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="/avisoLegal" class="nav-link p-0 text-body-secondary">Aviso Legal</a></li>
+                </ul>
+            </div>
+
+            <div class="col-6 col-md-2 mb-3">
+                <h5>Información</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="/comoFunciona" class="nav-link p-0 text-body-secondary">Cómo Funciona</a></li>
+                    <li class="nav-item mb-2"><a href="/contacto" class="nav-link p-0 text-body-secondary">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-5 offset-md-1 mb-3">
+                <form id="subscriptionForm" action="/suscribir" method="POST">
+                    <h5>Subscríbete para recibir información</h5>
+                    <p>Resumen mensual de nuestras novedades.</p>
+                    <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                        <label for="newsletter1" class="visually-hidden">Correo Electrónico</label>
+                        <input id="newsletter1" name="email" type="email" class="form-control" placeholder="Correo Electrónico" required>
+                        <button class="btn btn-primary" type="submit">Subscríbete</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+            <p>© 2024 Dindog, Inc. All rights reserved.</p>
+            <ul class="list-unstyled d-flex">
+                <li class="ms-3"><a class="link-body-emphasis" href="https://es.linkedin.com/company/dindog-site"><img src="/iconos/linkedin.png" alt="Logo" style="height: 30px; margin-right: 10px;"></a></li>
+                <li class="ms-3"><a class="link-body-emphasis" href="https://www.instagram.com/Dindog.site"><img src="/iconos/icons8-instagram.svg" alt="Logo" style="height: 30px; margin-right: 10px;"></a></li>
+                <li class="ms-3"><a class="link-body-emphasis" href="#"><img src="/iconos/icons8-facebook-nuevo.svg" alt="Logo" style="height: 30px; margin-right: 10px;"></a></li>
+                <li class="ms-3"><a class="link-body-emphasis" href="https://www.tiktok.com/@Dindog.site"><img src="/iconos/icons8-tik-tok.svg" alt="Logo" style="height: 30px; margin-right: 10px;"></a></li>
+            </ul>
+        </div>
+    </footer>
+</div>
+<script>
+    document.getElementById('subscriptionForm').addEventListener('submit', function(event) {
+        var emailInput = document.getElementById('newsletter1');
+        var email = emailInput.value;
+
+        if (!validarCorreo(email)) {
+            event.preventDefault();
+            alert('Por favor, introduce una dirección de correo electrónico válida.');
+        }
+    });
+
+    function validarCorreo(email) {
+        var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(String(email).toLowerCase());
+    }
+</script>

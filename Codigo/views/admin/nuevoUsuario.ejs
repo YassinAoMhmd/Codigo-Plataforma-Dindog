@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/iconos/Logo_Dindog.svg" rel="shortcut icon">
+    <title>Crear Nuevo Usuario - DinDog</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheet/admin/nuevoUsuario.css">
+</head>
+<body>
+    <%- include('../partials/navbarAdmin') %>
+
+    <div class="container mt-5">
+        <div class="card shadow p-4">
+            <h1 class="page-heading text-center mb-4">Crear Nuevo Usuario</h1>
+            <form action="/admin/usuarios" method="POST">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Nombre de Usuario:</label>
+                    <input type="text" class="form-control" id="username" name="user[username]" required>
+                </div>
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre Completo:</label>
+                    <input type="text" class="form-control" id="nombre" name="user[nombre]" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Correo Electrónico:</label>
+                    <input type="email" class="form-control" id="email" name="user[email]" required>
+                </div>
+                <div class="mb-3">
+                    <label for="telefono" class="form-label">Teléfono:</label>
+                    <input type="text" class="form-control" id="telefono" name="user[telefono]" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña:</label>
+                    <input type="password" class="form-control" id="password" name="user[password]" required>
+                </div>
+                <div class="mb-3">
+                    <label for="rol" class="form-label">Rol:</label>
+                    <select class="form-select" id="rol" name="user[esCuidador]" onchange="toggleCuidadorFields(this.value)">
+                        <option value="false">Usuario</option>
+                        <option value="true">Cuidador</option>
+                    </select>
+                </div>
+                <div id="cuidadorFields" style="display:none;">
+                    <div class="mb-3">
+                        <label for="servicios" class="form-label">Tipo de Servicio:</label>
+                        <input type="text" class="form-control" id="servicios" name="user[servicios]">
+                    </div>
+                    <div class="mb-3">
+                        <label for="horario" class="form-label">Horario:</label>
+                        <input type="text" class="form-control" id="horario" name="user[horario]">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary">Crear</button>
+                    <a href="/admin/usuarios" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
+    <script>
+        function toggleCuidadorFields(value) {
+            var display = (value === 'true') ? 'block' : 'none';
+            document.getElementById('cuidadorFields').style.display = display;
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

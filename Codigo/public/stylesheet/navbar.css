@@ -1,0 +1,72 @@
+.navbar-custom {
+    background-color: #FFD700;
+    color: #333; 
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    margin-right: 30px; 
+}
+
+.nav-link {
+    color: #333;
+    margin-right: 30px; 
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.user-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-left: 2px;
+    margin-right: 2px; 
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+}
+
+.search-box input {
+    border: none;
+    padding: 8px 10px;
+    border-radius: 0;
+    width: 200px; 
+}
+
+.search-box button {
+    border: none;
+    background: none;
+    color: #333; 
+}
+
+.nav-item.dropdown .dropdown-toggle {
+    max-width: 150px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.nav-item .badge {
+    font-size: 0.75rem; 
+    padding: 0.5em 0.6em; 
+    vertical-align: top; 
+    margin-left: -0.75em; 
+    margin-top: -0.1em; 
+    line-height: 1; 
+    min-width: 1.5em; 
+    height: 1.5em;
+    text-align: center;
+    display: inline-block; 
+    border-radius: 0.75em; 
+}
+
+.nav-item .badge.bg-warning.text-dark {
+    color: #000; 
+    background-color: #ffc107; 
+}

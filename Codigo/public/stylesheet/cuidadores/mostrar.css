@@ -1,0 +1,192 @@
+body {
+    background-color: rgb(237, 236, 236) !important;
+}
+
+.cuidador-profile {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.cuidador-image {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cuidador-info {
+    padding: 20px;
+    background-color: transparent;
+    border-radius: 0; 
+    box-shadow: none; 
+}
+
+.cuidador-name {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.cuidador-email, .cuidador-location, .cuidador-schedule {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.cuidador-services {
+    margin-top: 20px;
+}
+
+.cuidador-services h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.service-card {
+    background-color: transparent; 
+    padding: 0; 
+    border-radius: 0; 
+    margin-bottom: 10px;
+    box-shadow: none; 
+}
+
+.service-card h4 {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+}
+
+.cuidador-actions {
+    margin-top: 20px;
+}
+
+.cuidador-actions .btn {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.reviews-section {
+    margin-top: 50px;
+}
+
+.h2-reviews {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.review-rating {
+    font-size: 1.2rem;
+}
+
+.review-rating .fa-star {
+    color: #ccc;
+}
+
+.review-rating .fa-star.checked {
+    color: orange;
+}
+
+.card {
+    border: none;
+    border-radius: 0; 
+    box-shadow: none;
+    margin-bottom: 20px;
+}
+
+.card-body {
+    padding: 0; 
+}
+
+.card-title {
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+.btn-info:hover {
+    background-color: #138496;
+    border-color: #117a8b;
+}
+
+.cuidador-info {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cuidador-name {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.cuidador-email,
+.cuidador-location,
+.cuidador-schedule {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.cuidador-services {
+    margin-top: 30px;
+}
+
+.cuidador-services h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.service-card {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.service-card h4 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.cuidador-actions .btn {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.cuidador-actions .btn:last-child {
+    margin-right: 0;
+}

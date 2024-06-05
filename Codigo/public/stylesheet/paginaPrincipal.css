@@ -1,0 +1,618 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+                                        /*Comienza el codigo css*/
+
+body{
+    background-color: rgb(237, 236, 236) !important;
+    line-height: 1.5; 
+}
+
+h1, h2, h3, h4 {
+    letter-spacing: 0.5px;
+}
+
+p {
+    letter-spacing: 0.1px;
+}
+
+img{
+    border-radius: 20px;
+}
+
+img:hover {
+    transform: scale(1.03); 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-custom {
+    border-radius: 5px; 
+    cursor: pointer;
+    outline: none;
+    position: relative; 
+    overflow: hidden; 
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); 
+}
+
+.btn-custom::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 100%;
+    transition: width 0.5s ease, height 0.5s ease;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+}
+
+.btn-custom:hover::before {
+    width: 300%; 
+    height: 300%; 
+}
+
+.btn-custom:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4); 
+    transform: translateY(-4px); 
+}
+
+.btn-custom span {
+    position: relative; 
+    z-index: 2; 
+}
+
+.btn-custom:hover span {
+    color: #FFF;
+}
+
+                                            /*HEADER*/
+
+.header {
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    margin-top: 100px;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column; 
+    margin-right: 200px;
+    text-align: center;
+}
+
+#headerPrimerParrafo{
+    font-size: 50px;
+    font-weight: bold;
+    width: 400px;
+    
+}
+
+#headerSegundoParrafo{
+    font-size: 20px;
+    text-align: center;
+    margin-left: 60px;
+}
+
+.header img {
+    width: 250px;
+    height: auto;
+    object-fit: cover; 
+}
+
+.enlacesHeader{
+    padding: 20px;
+    font-size: 20px;
+}
+
+#contactanos{
+    border: none;
+    background-color: #eac152;
+    border-radius: 10px;
+    font-weight: bold;
+    padding: 15px;
+    margin-right: 20px;
+    color: black;
+}
+
+#contactanos:hover{
+    background-color: #eac152;
+}
+
+#funcionar{
+    border-radius: 10px;
+    font-weight: bold;
+    padding: 15px;
+    color: black;
+    width: 180px;
+    background-color: rgb(237, 236, 236);
+    border: 2px solid black;
+}
+
+.container{
+    margin-top: 100px;
+}
+
+                                            /*PORQUE DINDOG*/
+
+.porqueDindog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px; 
+    margin-top: 200px; 
+}
+
+.porqueDindog img {
+    width: auto; 
+    height: 300px; 
+    margin-right: 25px;
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+    transition: transform 0.3s ease; 
+}
+
+.porqueDindog img:hover {
+    transform: scale(1.05); 
+}
+
+.textoPorque {
+    text-align: left;
+}
+
+.textoPorque h2, .textoPorque p {
+    margin-bottom: 15px; 
+}
+
+#primerTextoPorque{
+    color: gray;
+}
+
+.porqueDindog .btn-custom {
+    background-color: rgb(237, 236, 236);
+    color: red;
+    border: 2px solid red;
+    padding: 10px 20px; 
+    border-radius: 20px; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); 
+    transition: background-color 0.3s ease; 
+    width: 180px;
+}
+
+.porqueDindog .btn-custom:hover{
+    background-color: rgb(237, 236, 236);
+    color: red;
+    border: 2px solid red;
+}
+
+
+                                    /*SERVICIOS 1*/
+.servicios1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 60px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    position: relative;
+    z-index: 1;
+    width: 800px;
+    height: 350px;
+    margin-top: 200px;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 16px 32px rgba(0, 0, 0, 0.1);
+    overflow: visible; 
+    position: relative; 
+}
+
+.servicios1::after {
+    content: '';
+    position: absolute;
+    z-index: -1; 
+    bottom: -10px; 
+    left: 5%; 
+    width: 90%; 
+    height: 20px; 
+    background: rgba(0, 0, 0, 0.05); 
+    border-radius: 5px; 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+}
+
+.servicios1 h3{
+    width: 300px;
+    margin-right: 100px;
+}
+
+.servicios1 p{
+    width: 300px;
+}
+
+.servicios1 a{
+    font-weight: bold;
+    padding: 20px;
+    background-color: rgb(251, 181, 181);
+    border-radius: 20px;
+    border: none;
+}
+
+.servicios1 .btn:hover{
+    background-color: rgb(251, 181, 181);
+
+}
+
+.servicios1 img{
+    margin-top: -150px;
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+}
+
+
+                                    /*SERVICIOS 2*/
+.servicios2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    margin: auto;
+    width: 1100px;
+    margin-top: 200px;
+    height: 800px;
+    padding: 50px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    margin-top:300px ;
+}
+
+.servicios2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -50px; 
+    height: 60px; 
+    left: 20px;
+    right: 20px;
+    background: #ddd; 
+    z-index: -1;
+    border-radius: 0 0 10px 10px; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
+}
+
+
+.izquierda{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    margin-right: 20px;
+}
+
+.izquierda .btn-custom{
+    padding: 10px 20px 10px 20px;
+    background-color: rgb(239, 236, 131);
+    font-weight: bold;
+    border-radius: 20px;
+    border: none;
+    width: 200px;
+}
+
+.izquierda .btn-custom:hover{
+    padding: 10px 20px 10px 20px;
+    background-color: rgb(239, 236, 131);
+}
+
+.izquierda p{
+    width: 350px;
+}
+
+.izquierda img{
+    margin-top: -300px;
+}
+
+.derecha{
+    margin-left: 120px;
+}
+
+.derecha hr{
+    width: 300px;
+}
+
+.derecha h4,p{
+    width: 260px;
+}
+.derecha p{
+    color: gray;
+    font-size: 14px;
+}
+
+                                            /*REGISTRO*/
+.registro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top:200px;
+    background-color: white;
+    border-radius: 20px;
+    width: 1100px;
+    height: 400px;
+    padding: 20px;
+}
+
+.text-registro h2{
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.text-registro{
+    width: 500px;
+}
+
+.text-registro p{
+    width: 500px;
+    margin-top: 25px;
+}
+
+.registro img{
+    width: 400px;
+    height: 300px;
+    margin-top: -160px;
+}
+
+.text-registro .btn-custom{
+    border: none;
+    background-color: #eac152;
+    border-radius: 20px;
+    font-weight: bold;
+    padding: 15px;
+    margin-right: 20px;
+    color: black;
+}
+
+.text-registro .btn-custom:hover{
+    background-color: #eac152;
+}
+
+                                                        /*MEDIA QUERIEES*/
+
+@media only screen and (max-width: 600px) {
+  .header {
+      flex-direction: column-reverse;
+      margin-top: 50px;
+  }
+
+  .header img,
+  .porqueDindog img,
+  .servicios1 img,
+  .servicios2 .izquierda img,
+  .registro img {
+      width: 100%;
+      margin-top: 0;
+      height: auto;
+  }
+
+  .header .text-container,
+  .porqueDindog .textoPorque,
+  .servicios1 .textoServicios1,
+  .servicios2 .derecha,
+  .registro .text-registro {
+      margin-right: 0;
+      text-align: center;
+  }
+
+  .text-container,
+  .textoPorque,
+  .textoServicios1,
+  .servicios2 .izquierda,
+  .text-registro {
+      width: auto;
+      padding: 0 15px;
+  }
+
+  .enlacesHeader,
+  .servicios2,
+  .registro {
+      flex-direction: column;
+  }
+
+  .enlacesHeader a,
+  .servicios2 .izquierda .btn-custom,
+  .registro .text-registro .btn-custom {
+      width: 100%;
+      margin: 10px 0;
+  }
+
+  .servicios1,
+  .servicios2,
+  .registro {
+      width: 100%;
+      height: auto;
+      padding: 20px;
+  }
+
+  .servicios2 .derecha h4,
+  .servicios2 .derecha p,
+  .text-registro h2,
+  .text-registro p {
+      width: auto;
+  }
+
+  .servicios2::after,
+  .servicios1::after {
+      display: none; 
+  }
+
+  .navbar-brand, .navbar-nav .nav-link {
+      margin-right: 0;
+  }
+
+  .profile-icon {
+      margin-right: 15px; 
+  }
+
+  .navbar-toggler {
+      display: block;
+  }
+
+  .navbar-collapse {
+      text-align: center;
+  }
+
+  .porqueDindog {
+      flex-direction: column;
+      margin-top: 50px;
+  }
+
+  .porqueDindog img {
+      margin-top: 0;
+      width: 100%;
+  }
+
+  .porqueDindog .textoPorque {
+      margin: 20px;
+  }
+
+  .servicios1 {
+      flex-direction: column;
+      width: 100%; 
+      height: auto; 
+      padding: 20px;
+      box-shadow: none; 
+  }
+
+  .servicios1 img,
+  .servicios1 .textoServicios1 {
+      width: 100%; 
+      margin-top: 20px; 
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 768px) {
+  .header {
+      flex-direction: column;
+      margin-top: 50px;
+  }
+
+  .header .text-container,
+  .header img {
+      width: 100%;
+  }
+
+  .servicios1, .servicios2, .registro {
+      width: 100%; 
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .servicios1 img,
+  .servicios2 img,
+  .registro img {
+      margin-top: 20px;
+  }
+
+  .textoServicios1, .textoPorque, .text-registro {
+      padding: 10px;
+      text-align: center;
+  }
+
+  .servicios2 .izquierda,
+  .servicios2 .derecha {
+      width: auto;
+      text-align: center;
+      padding: 10px;
+  }
+
+  .porqueDindog {
+      flex-direction: column;
+  }
+
+  .porqueDindog img {
+      margin-bottom: 20px;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .header {
+      flex-direction: row;
+      align-items: center;
+  }
+
+  .header .text-container {
+      margin-right: 50px;
+  }
+
+  .servicios1, .servicios2, .registro {
+      width: 90%; 
+  }
+
+  .servicios1 img,
+  .servicios2 img,
+  .registro img {
+      width: auto;
+  }
+
+  .servicios2 .izquierda,
+  .servicios2 .derecha {
+      width: 50%;
+  }
+
+  .porqueDindog {
+      flex-direction: row;
+  }
+
+  .porqueDindog img {
+      width: 50%;
+  }
+
+  .porqueDindog .textoPorque {
+      width: 50%;
+  }
+}
+

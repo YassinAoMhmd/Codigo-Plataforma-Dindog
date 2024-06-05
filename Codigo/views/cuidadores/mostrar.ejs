@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= cuidador.nombre %> - DinDog</title>
+    <link href="/iconos/Logo_Dindog.svg" rel="shortcut icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="/stylesheet/cuidadores/mostrar.css" rel="stylesheet">
+    <link href="/stylesheet/stars.css" rel="stylesheet">
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    <div class="container mt-5">
+        <%- include('../partials/flash') %>
+        <div class="row">
+            <div class="col-lg-4 col-md-5 text-center">
+                <% if(cuidador.image) { %>
+                    <img src="<%= cuidador.image.url %>" class="img-fluid rounded shadow-sm mb-4" alt="Imagen del cuidador">
+                <% } %>
+            </div>
+            <div class="col-lg-8 col-md-7">
+                <div class="cuidador-info p-4 shadow-sm rounded bg-white">
+                    <h1 class="cuidador-name"><%= cuidador.nombre %></h1>
+                    <p class="cuidador-email"><strong>Correo:</strong> <%= cuidador.email %></p>
+                    <p class="cuidador-location"><strong>Ubicación:</strong> <%= cuidador.direccionStr || 'No proporcionada' %></p>
+                    <p class="cuidador-schedule"><strong>Horario:</strong> <%= cuidador.horario %></p>
+                    <div class="cuidador-services mt-4">
+                        <h3>Servicios Ofrecidos:</h3>
+                        <% cuidador.servicios.forEach(function(servicio) { %>
+                            <div class="service-card p-3 mb-3 shadow-sm rounded bg-light">
+                                <h4><%= servicio.tipo %></h4>
+                                <p><strong>Precio:</strong> $<%= servicio.precio %></p>
+                                <% if(servicio.descripcion) { %>
+                                    <p><strong>Descripción:</strong> <%= servicio.descripcion %></p>
+                                <% } %>
+                            </div>
+                        <% }); %>
+                    </div>
+                    <div class="cuidador-actions mt-4">
+                        <% if(currentUser && cuidador.author && cuidador.author._id.equals(currentUser._id)) { %>
+                            <a href="/cuidadores/<%= cuidador._id %>/edit" class="btn btn-secondary me-2">Editar</a>
+                            <form action="/cuidadores/<%= cuidador._id %>?_method=DELETE" method="POST" class="d-inline-block">
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>
+                        <% } %>
+                    </div>
+                </div>
+            </div>            
+        </div>
+        
+        <div class="d-flex justify-content-between align-items-center mt-4">
+            <a href="/cuidadores" class="btn btn-info">Volver a Todos los Cuidadores</a>
+            <div class="cuidador-actions">
+                <% if(currentUser && currentUser._id.toString() !== cuidador._id.toString()) { %>
+                    <a href="/mensajes/chat/<%= cuidador._id %>" class="btn btn-primary">Enviar Mensaje</a>
+                    <a href="/reservas/nueva/<%= cuidador._id %>" class="btn btn-success">Hacer una Reserva</a>
+                <% } %>
+            </div>
+        </div>
+
+        <% if(currentUser) { %>
+            <h3 class="mt-5">Añadir una Reseña</h3>
+            <form action="/cuidadores/<%= cuidador._id %>/reviews" method="POST" class="mb-3">
+                <div class="mb-3">
+                    <label for="calificacion">Calificación:</label>
+                    <fieldset class="starability-basic">
+                        <input type="radio" id="no-rate" class="input-no-rate" name="review[calificación]" value="1" checked aria-label="No rating." />
+                        <input type="radio" id="first-rate1" name="review[calificación]" value="1" />
+                        <label for="first-rate1" title="Terrible">1 star</label>
+                        <input type="radio" id="first-rate2" name="review[calificación]" value="2" />
+                        <label for="first-rate2" title="Not good">2 stars</label>
+                        <input type="radio" id="first-rate3" name="review[calificación]" value="3" />
+                        <label for="first-rate3" title="Average">3 stars</label>
+                        <input type="radio" id="first-rate4" name="review[calificación]" value="4" />
+                        <label for="first-rate4" title="Very good">4 stars</label>
+                        <input type="radio" id="first-rate5" name="review[calificación]" value="5" />
+                        <label for="first-rate5" title="Amazing">5 stars</label>
+                    </fieldset>
+                </div>
+                <div class="mb-3">
+                    <label for="texto">Reseña:</label>
+                    <textarea id="texto" name="review[texto]" class="form-control" rows="3"></textarea>
+                </div>
+                <button type="submit" id="submitReview" class="btn btn-primary" disabled>Enviar</button>
+            </form>
+        <% } %>
+
+        <div class="row">
+            <div class="col-12">
+                <h2 class="h2-reviews">Reseñas</h2>
+                <% if(cuidador.reviews && cuidador.reviews.length > 0) { %>
+                    <% cuidador.reviews.forEach(function(review) { %>
+                        <div class="card my-3">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= review.author ? review.author.username : "Usuario desconocido" %> - <small><%= moment(review.createdAt).fromNow() %></small></h5>
+                                <p class="card-text"><%= review.texto %></p>
+                                <div class="review-rating">
+                                    <% for(var i = 1; i <= 5; i++) { %>
+                                        <% if(i <= review.calificación) { %>
+                                            <i class="fas fa-star checked"></i>
+                                        <% } else { %>
+                                            <i class="far fa-star"></i>
+                                        <% } %>
+                                    <% } %>
+                                </div>
+                                <% if(currentUser && review.author && currentUser._id.toString() === review.author._id.toString()) { %>
+                                    <form action="/cuidadores/<%= cuidador._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST" class="mt-2">
+                                        <button type="submit" class="btn btn-danger btn-sm">Eliminar Reseña</button>
+                                    </form>
+                                <% } %>
+                            </div>
+                        </div>
+                    <% }); %>
+                <% } else { %>
+                    <p>No hay reseñas todavía. ¡Sé el primero en escribir una!</p>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../partials/footer') %>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="/javascripts/validarFormulario.js"></script>
+    <script src="/javascripts/cuidadores/mostrar.js"></script>
+</body>
+</html>

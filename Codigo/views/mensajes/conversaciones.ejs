@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/iconos/Logo_Dindog.svg" rel="shortcut icon">
+    <title>Conversación</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheet/mensajes/conversacion.css">
+</head>
+<body>
+    <%- include('../partials/navbar.ejs') %>
+    <main class="container mt-5">
+        <div class="chat-container card shadow-sm">
+            <div class="card-header bg-primary text-white text-center">
+                <h1 class="h3 mb-0">Conversación con <%= conversacion.participantes[1].nombre %></h1>
+            </div>
+            <div class="card-body">
+                <div id="chat-messages" class="chat-messages">
+                    <% conversacion.mensajes.forEach(mensaje => { %>
+                        <div class="message <%= mensaje.de._id.toString() === req.user._id.toString() ? 'sent' : 'received' %>">
+                            <div class="message-content">
+                                <p><%= mensaje.contenido %></p>
+                                <time><%= new Date(mensaje.fecha).toLocaleString() %></time>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+                <form action="/enviar-mensaje/<%= conversacion.participantes[1]._id %>" method="post" class="mt-4">
+                    <div class="input-group">
+                        <textarea name="contenido" class="form-control" rows="2" placeholder="Escribe tu mensaje..." required></textarea>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <%- include('../partials/footer.ejs') %>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

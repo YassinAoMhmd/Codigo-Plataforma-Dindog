@@ -1,0 +1,11 @@
+<% layout('layouts/boilerplate') %>
+<div class="container mt-5">
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">Error <%= err.status %>: Algo salió mal</h4>
+        <p><%= err.message %></p>
+        <hr>
+        <p class="mb-0">Por favor contacta al soporte si el problema persiste.</p>
+    </div>
+    <a href="/" class="btn btn-primary">Volver al Inicio</a>
+    <a href="/cuidadores" class="btn btn-secondary">Ver todos los Cuidadores</a>
+</div>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de <%= usuario.nombre %></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container my-5">
+        <h1 class="text-center">Perfil de <%= usuario.nombre %></h1>
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Información Personal</h5>
+                <p><strong>Nombre:</strong> <%= usuario.nombre %></p>
+                <p><strong>Nombre de Usuario:</strong> <%= usuario.username %></p>
+                <p><strong>Email:</strong> <%= usuario.email %></p>
+                <p><strong>Teléfono:</strong> <%= usuario.telefono %></p>
+                <h5 class="card-title mt-4">Ubicación</h5>
+                <p><strong>Ciudad:</strong> <%= usuario.ubicacion.ciudad %></p>
+                <p><strong>País:</strong> <%= usuario.ubicacion.pais %></p>
+                <p><strong>Código Postal:</strong> <%= usuario.ubicacion.codigoPostal %></p>
+                <p><strong>Dirección:</strong> <%= usuario.ubicacion.direccion %></p>
+                <% if (usuario.datosPerro) { %>
+                    <h5 class="card-title mt-4">Información del Perro</h5>
+                    <p><strong>Nombre:</strong> <%= usuario.datosPerro.nombre %></p>
+                    <p><strong>Raza:</strong> <%= usuario.datosPerro.raza %></p>
+                    <p><strong>Edad:</strong> <%= usuario.datosPerro.edad %> años</p>
+                <% } %>
+            </div>
+        </div>
+        <a href="/reservas/nueva/<%= usuario._id %>" class="btn btn-primary">Reservar Servicio</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/iconos/Logo_Dindog.svg" rel="shortcut icon">
+    <title>Conversaciones</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/stylesheet/mensajes/index.css">
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+            <div class="col-md-4 contactos">
+                <div class="searchbar p-3 border-bottom">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Escribe un mensaje" aria-label="Buscar" id="search-input">
+                        <span class="input-group-text"><i class="fas fa-search"></i></span>
+                    </div>
+                </div>
+                <div class="list-group chat-list" id="contactosList">
+                    <% if (usuarios.length > 0) { %>
+                        <% usuarios.forEach(usuario => { %>
+                            <a href="/mensajes/chat/<%= usuario._id %>" class="list-group-item list-group-item-action d-flex align-items-center position-relative <%= usuario.numUnreadMessages ? 'unread-message' : '' %>">
+                                <div class="avatar me-3 position-relative">
+                                    <% if (usuario.image && usuario.image.url) { %>
+                                        <img src="<%= usuario.image.url %>" alt="Avatar de <%= usuario.nombre %>" class="img-fluid rounded-circle avatar-img">
+                                    <% } else { %>
+                                        <img src="/imgs/usuario-de-perfil.png" alt="Icono perfil por defecto" class="img-fluid rounded-circle avatar-img">
+                                    <% } %>
+                                    <% if (usuario.numUnreadMessages) { %>
+                                        <span class="notification-dot"></span>
+                                    <% } %>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <div class="d-flex justify-content-between">
+                                        <strong class="contact-name"><%= usuario.nombre %></strong>
+                                        <% if (usuario.numUnreadMessages) { %>
+                                            <span class="badge bg-danger rounded-pill"><%= usuario.numUnreadMessages %></span>
+                                        <% } %>
+                                    </div>
+                                </div>
+                            </a>
+                        <% }) %>
+                    <% } else { %>
+                        <p class="no-conversations">No tienes conversaciones activas.</p>
+                    <% } %>
+                </div>
+            </div>
+            <div class="col-md-8 d-flex justify-content-center align-items-center">
+                <div class="text-center">
+                    <img src="/imgs/chat.png" alt="Imagen de conversación" class="img-fluid mb-3" style="max-width: 150px;">
+                    <h5>Chat DinDog</h5>
+                    <p>Selecciona una conversación y chatea al instante.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('../partials/footer') %>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <script src="/javascripts/mensajes/index.js"></script>
+</body>
+</html>

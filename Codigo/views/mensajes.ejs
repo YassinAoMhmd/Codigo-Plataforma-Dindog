@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensajes - DinDog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/iconos/Logo_Dindog.svg" rel="shortcut icon">
+    <link href="/stylesheet/mensajes.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <%- include('partials/navbar') %>
+    </header>
+
+    <div class="container chat-container mt-5 mb-5">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="text-center mb-4">Mensajes</h3>
+                <div id="mensajeArea" class="mb-3">
+
+                </div>
+                <form id="mensajeForm" class="d-flex">
+                    <textarea class="form-control me-2" id="mensajeText" rows="2" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <%- include('partials/footer') %>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="/javascripts/mensajes.js"></script>
+</body>
+</html>

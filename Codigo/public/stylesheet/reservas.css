@@ -1,0 +1,178 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+
+
+                                                /*Comienza el codigo css*/
+
+body{
+    background-color: rgb(237, 236, 236) !important;
+    line-height: 1.5; 
+}
+
+h1, h2, h3, h4 {
+    letter-spacing: 0.5px;
+}
+
+p {
+    letter-spacing: 0.1px;
+}
+
+img{
+    border-radius: 15px;
+}
+
+img:hover {
+    transform: scale(1.03); 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button {
+    border-radius: 5px; 
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    overflow: hidden; 
+    transition: all 0.3s ease; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); 
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2); 
+    border-radius: 100%;
+    transition: width 0.5s ease, height 0.5s ease;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+}
+
+button:hover::before {
+    width: 300%; 
+    height: 300%; 
+}
+
+button:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4); 
+    transform: translateY(-4px); 
+}
+
+button span {
+    position: relative; 
+    z-index: 2; 
+}
+
+button:hover span {
+    color: #FFF;
+}
+
+                                    /*CUIDADORES*/
+.cuidadores{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 120px;
+}
+
+.cuidadores img{
+    margin-right: 100px;
+    height: 300px;
+}
+
+.text-cuidadores{
+    display: flex;
+    flex-direction: column;
+}
+
+.tarifa-cuidadores{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+
+.text-cuidadores #precio{
+    font-weight: bold;
+    font-size: 25px;
+    margin-right: 20px;
+}
+
+.text-cuidadores #disponibilidad{
+    color: #FFD700;
+}
+
+.info-cuidadores{
+    margin: 0;
+    padding: 0;
+    width: 350px;
+}
+
+
+                                    /*FORMULARIO*/
+.formulario{
+    margin-top:200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.formulario p{
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.formulario button{
+    margin-top: 30px;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: #ffedb5;
+    border: none;
+    padding: 10px 10px 10px 10px;
+}

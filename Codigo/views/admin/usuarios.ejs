@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/iconos/Logo_Dindog.svg" rel="shortcut icon">
+    <title>Administración de Usuarios - DinDog</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheet/admin/usuarios.css">
+</head>
+<body>
+    <%- include('../partials/navbarAdmin') %>
+
+    <div class="container mt-5">
+        <h1 class="page-heading text-center mb-4">Administración de Usuarios y Cuidadores</h1>
+        <div class="d-flex justify-content-end mb-3">
+            <a href="/admin/usuarios/new" class="btn btn-add">Agregar Nuevo Usuario</a>
+        </div>
+        <div class="table-responsive shadow-sm rounded">
+            <table class="table table-hover align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Correo Electrónico</th>
+                        <th>Rol</th>
+                        <th class="text-center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% usuarios.forEach(function(usuario) { %>
+                        <tr>
+                            <td><%= usuario._id %></td>
+                            <td><%= usuario.nombre %></td>
+                            <td><%= usuario.email %></td>
+                            <td><%= usuario.esCuidador ? 'Cuidador' : 'Usuario' %></td>
+                            <td class="action-buttons text-center">
+                                <a href="/admin/usuarios/edit/<%= usuario._id %>" class="btn btn-edit">Editar</a>
+                                <button class="btn btn-delete" onclick="deleteUsuario('<%= usuario._id %>')">Eliminar</button>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script>
+        function deleteUsuario(usuarioId) {
+            if (confirm('¿Estás seguro de que quieres eliminar este usuario?')) {
+                fetch('/admin/usuarios/' + usuarioId, {
+                    method: 'DELETE',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if(data.success) {
+                        alert(data.message);
+                        window.location.reload();
+                    } else {
+                        throw new Error(data.message);
+                    }
+                })
+                .catch(err => alert('Error: ' + err.message));
+            }
+        }
+    </script>
+</body>
+</html>

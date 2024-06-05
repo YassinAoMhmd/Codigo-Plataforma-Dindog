@@ -1,0 +1,20 @@
+<style>
+    .custom-margin {
+        margin: 15px; 
+    }
+    </style>
+    
+    <% if (success && success.length) { %>    
+        <div class="alert alert-success alert-dismissible fade show custom-margin" role="alert">
+            <%= success %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <% } %>
+    
+    <% if (error && error.length) { %>    
+        <div class="alert alert-danger alert-dismissible fade show custom-margin" role="alert">
+            <%= error %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <% } %>
+    

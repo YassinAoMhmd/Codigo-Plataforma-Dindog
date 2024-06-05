@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/iconos/Logo_Dindog.svg" rel="shortcut icon">
+    <title>Mis Reservas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheet/reserva/mis-reservas.css">
+</head>
+<body>
+    <%- include('../partials/navbar.ejs') %> 
+    <div class="container mt-5">
+        <h1 class="mb-4 text-primary">Mis Reservas</h1>
+
+        <h2>Reservas Realizadas</h2>
+        <% if (reservasRealizadas.length > 0) { %>
+            <div class="row">
+                <% reservasRealizadas.sort((a, b) => new Date(b.fechaInicio) - new Date(a.fechaInicio)).forEach(reserva => { %>
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= reserva.cuidador.nombre %></h5>
+                                <p class="card-text">
+                                    <strong>Fecha Inicio:</strong> <%= reserva.fechaInicioFormatted %><br>
+                                    <strong>Hora Inicio:</strong> <%= reserva.horaInicioFormatted %><br>
+                                    <strong>Fecha Fin:</strong> <%= reserva.fechaFinFormatted %><br>
+                                    <strong>Hora Fin:</strong> <%= reserva.horaFinFormatted %><br>
+                                    <strong>Estado:</strong> <span class="badge bg-<%= reserva.estado === 'pendiente' ? 'warning' : reserva.estado === 'aceptada' ? 'success' : 'secondary' %>"><%= reserva.estado %></span>
+                                </p>
+                                <div class="d-flex justify-content-between">
+                                    <a href="/reservas/<%= reserva._id %>" class="btn btn-info btn-sm">Detalles</a>
+                                    <% if (reserva.estado === 'pendiente' || reserva.estado === 'aceptada') { %>
+                                        <form action="/reservas/cancelar/<%= reserva._id %>?_method=PATCH" method="post" onsubmit="return confirm('¿Estás seguro que deseas cancelar esta reserva?');">
+                                            <button type="submit" class="btn btn-danger btn-sm">Cancelar</button>
+                                        </form>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+        <% } else { %>
+            <div class="alert alert-info text-center">
+                <p>No tienes reservas realizadas en este momento.</p>
+            </div>
+        <% } %>
+
+        <h2>Reservas Recibidas</h2>
+        <% if (reservasRecibidas.length > 0) { %>
+            <div class="row">
+                <% reservasRecibidas.sort((a, b) => new Date(b.fechaInicio) - new Date(a.fechaInicio)).forEach(reserva => { %>
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= reserva.usuario.nombre %></h5>
+                                <p class="card-text">
+                                    <strong>Fecha Inicio:</strong> <%= reserva.fechaInicioFormatted %><br>
+                                    <strong>Hora Inicio:</strong> <%= reserva.horaInicioFormatted %><br>
+                                    <strong>Fecha Fin:</strong> <%= reserva.fechaFinFormatted %><br>
+                                    <strong>Hora Fin:</strong> <%= reserva.horaFinFormatted %><br>
+                                    <strong>Estado:</strong> <span class="badge bg-<%= reserva.estado === 'pendiente' ? 'warning' : reserva.estado === 'aceptada' ? 'success' : 'secondary' %>"><%= reserva.estado %></span>
+                                </p>
+                                <div class="d-flex justify-content-between">
+                                    <a href="/reservas/<%= reserva._id %>" class="btn btn-info btn-sm">Detalles</a>
+                                    <% if (reserva.estado === 'pendiente' || reserva.estado === 'aceptada') { %>
+                                        <form action="/reservas/cancelar/<%= reserva._id %>?_method=PATCH" method="post" onsubmit="return confirm('¿Estás seguro que deseas cancelar esta reserva?');">
+                                            <button type="submit" class="btn btn-danger btn-sm">Cancelar</button>
+                                        </form>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+        <% } else { %>
+            <div class="alert alert-info text-center">
+                <p>No tienes reservas recibidas en este momento.</p>
+            </div>
+        <% } %>
+    </div>
+    <%- include('../partials/footer.ejs') %>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+body {
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  background-color: #e6e6e6 !important; 
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+.contactos {
+  background-color: #333333; 
+  border-right: 1px solid #2a2a2a; 
+  height: calc(100vh - 56px); 
+  overflow-y: auto;
+  padding: 0;
+}
+
+.contactos .searchbar {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #444444; 
+  border-bottom: 1px solid #2a2a2a; 
+}
+
+.contactos .searchbar .input-group {
+  width: 100%;
+  border-radius: 5px;
+  background-color: #555555;
+}
+
+.contactos .searchbar .input-group .form-control {
+  border: none;
+  background-color: #555555; 
+  color: white; 
+}
+
+.contactos .searchbar .input-group .form-control::placeholder {
+  color: white;
+}
+
+.contactos .searchbar .input-group .input-group-text {
+  background-color: #555555; 
+  border: none;
+  color: white;
+}
+
+.contactos .searchbar i {
+  margin-right: 10px;
+  color: #adb5bd;
+}
+
+.contactos .list-group-item {
+  padding: 10px; 
+  border: none;
+  transition: background-color 0.2s;
+  background-color: #333333; 
+  color: white; 
+}
+
+.contactos .list-group-item.active {
+  background-color: #555555; 
+  color: white; 
+}
+
+.contactos .list-group-item a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+}
+
+.contactos .list-group-item a:hover {
+  text-decoration: none;
+  background-color: #444444; 
+}
+
+.avatar img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.chat-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #e6e6e6; 
+  height: calc(100vh - 56px); 
+  padding: 0;
+}
+
+.text-center img {
+  max-width: 150px;
+  height: auto;
+}
+
+.text-center h5 {
+  margin-top: 15px;
+  color: #333;
+}
+
+.text-center p {
+  color: #6c757d;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #66b3ff; 
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.chat-list {
+  max-height: calc(100vh - 150px);
+  overflow-y: auto;
+  background-color: #333333; 
+  position: relative; 
+}
+
+.list-group-item {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.list-group-item:hover {
+  background-color: #444444; 
+}
+
+.unread-message {
+  background-color: #444444 !important; 
+}
+
+.unread-message .badge {
+  background-color: #dc3545;
+  color: white;
+}
+
+.avatar img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+img.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.input-group-text {
+  background-color: #444444; 
+  color: white; 
+  border: none;
+}
+
+#search-input {
+  border: none;
+  background-color: #555555; 
+  color: white; 
+  border-radius: 5px;
+}
+
+#filter-icon {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: white;
+}
+
+.avatar-img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+#filter-menu {
+  display: none;
+  position: absolute;
+  background: #333333; 
+  border: 1px solid #2a2a2a;
+  z-index: 1000;
+  color: white; 
+}
+
+.filter-option {
+  padding: 10px 15px;
+  cursor: pointer;
+  background-color: #333333; 
+  color: white; 
+}
+
+.filter-option:hover {
+  background: #444444; 
+}
+
+.text-center img {
+  width: 150px;
+}
+
+.text-muted {
+  font-size: 0.9rem;
+  color: #6c757d !important;
+}
+
+.no-conversations {
+  font-size: 1.5rem; 
+  color: white; 
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.unread-by-receiver {
+  background-color: #666666 !important; 
+  color: white; 
+}
+
+.notification-dot {
+  height: 10px;
+  width: 10px;
+  background-color: #dc3545;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}

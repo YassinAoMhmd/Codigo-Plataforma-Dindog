@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva - DinDog</title>
+    <link href="/iconos/Logo_Dindog.svg" rel="shortcut icon">
+    <link href="/stylesheet/comoFunciona.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+
+    <%- include('partials/navbar') %>
+
+        <div class="header">
+            <div class="imagen-con-texto">
+                <img src="https://www.veterinariaargosalbacete.com/wp-content/uploads/2019/11/cachorros-de-perro.jpg" alt="Imagen de perro">
+                <h1>¿Cómo funciona?</h1>
+                <a href="/rolRegistro" class="btn btn-primary">Comenzar</a>
+            </div>
+        </div>
+
+        <div class="servicios-container">
+          <h2>NUESTROS SERVICIOS</h2>
+          <div class="servicios">
+              <div class="servicio">
+                  <div class="servicio-imagen" style="background-image: url(https://www.serramayans.com/wp-content/uploads/2020/05/peluqueria-canina.png);">
+                      <span>Peluquería</span>
+                  </div>
+              </div>
+              <div class="servicio">
+                  <div class="servicio-imagen" style="background-image: url(https://www.residenciacaninaelespolon.net/cache/0/c/4/d/e/0c4de5ed6b29429e503d8bc5ec3d2955f83b28ee.jpg);">
+                      <span>Residencia</span>
+                  </div>
+              </div>
+              <div class="servicio">
+                  <div class="servicio-imagen" style="background-image: url(https://www.tiendanimal.es/articulos/wp-content/uploads/2017/09/Screenshot_2-1-1200x720.png);">
+                      <span>Artículos</span>
+                  </div>
+              </div>
+              <div class="servicio">
+                  <div class="servicio-imagen" style="background-image: url(https://us.123rf.com/450wm/pupsy075/pupsy0752005/pupsy075200500629/147633134-discusi%C3%B3n-gente-hablando-chat-dos-personas-hablando-icono-de-vector-de-personas-aislado-sobre.jpg);">
+                      <span>Contacto</span>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+
+        <div class="como-funciona-container">  
+          <div class="pasos">
+              <div class="paso">
+                  <div class="icon">
+                    <img src="/iconos/icons8-google-web-search-100.svg" alt="shortcut icon">
+                  </div>
+                  <h3>1. BUSCA</h3>
+                  <p>Busca el cuidador perfecto para tus horarios y servicios</p>
+              </div>
+              <div class="paso">
+                  <div class="icon">
+                    <img src="/iconos/icons8-escribir-96.png" alt="shortcut icon">
+                  </div>
+                  <h3>2. RESERVA</h3>
+                  <p>Reserva todo electronicamente</p>
+              </div>
+              <div class="paso">
+                  <div class="icon">
+                    <img src="/iconos/icons8-sonriente-100.png" alt="shortcut icon">
+                  </div>
+                  <h3>3. DISFRUTA</h3>
+                  <p>Disfruta tus mascotas están en buenas manos</p>
+              </div>
+          </div>
+        </div>
+          
+        <%- include('partials/footer') %>
+
+        <script src="/js/comoFunciona.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    </div>
+    
+</body>
+</html>

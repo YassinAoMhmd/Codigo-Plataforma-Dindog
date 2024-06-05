@@ -1,0 +1,14 @@
+
+.navbar-custom {
+    background-color: #343a40;
+}
+.navbar-brand, .nav-link {
+    color: #fff;
+}
+.navbar-brand:hover, .nav-link:hover {
+    color: #FFD700;
+}
+.admin-icon {
+    height: 30px;
+    border-radius: 50%;
+}

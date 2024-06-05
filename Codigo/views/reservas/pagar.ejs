@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagar Reserva - DinDog</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    <div class="container mt-5">
+        <h1>Pagar Reserva</h1>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Reserva con <%= reserva.cuidador.nombre %></h5>
+                <p class="card-text">Fecha de inicio: <%= reserva.fechaInicio.toLocaleDateString() %></p>
+                <p class="card-text">Fecha de fin: <%= reserva.fechaFin.toLocaleDateString() %></p>
+                <p class="card-text">Precio Total: €<%= reserva.precioTotal %></p>
+
+                <form action="/reservas/completar-pago/<%= reserva._id %>" method="post" id="payment-form">
+                    <div class="form-group">
+                        <label for="card-element">
+                            Tarjeta de crédito o débito
+                        </label>
+                        <div id="card-element">
+                            <!-- Tarjeta Stripe -->
+                        </div>
+                        <div id="card-errors" role="alert"></div>
+                    </div>
+                    <button class="btn btn-primary mt-3">Pagar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="/javascripts/reservas/pagar.js"></script>
+</body>
+</html>
